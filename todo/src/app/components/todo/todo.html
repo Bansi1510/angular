@@ -1,0 +1,19 @@
+<input [value]="newtask()" placeholder="Enter Task" (input)="newtask.set($event.target.value)" />
+<button (click)="addTodo()">Add todo</button>
+<ul>
+  @for (item of items(); track $index) {
+  <li style="background-color:black; color: white;">
+    <span>{{$index+1}}</span>
+    <span style="margin:20px 0px; cursor:pointer" (click)="markAsComplete($index)
+  ">
+      @if(item.done){
+      <s>{{item.task}}</s>
+      }@else {
+      {{item.task}}
+      }
+
+    </span>
+    <button style="margin: 20px" (click)="deleteTodo($index)">Delete</button>
+  </li>
+  }
+</ul>
